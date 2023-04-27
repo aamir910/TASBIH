@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="tisbehlogo.jpeg">
+    <title>TASHIB</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="count.js"></script> -->
+</head>
+<body>
+    <div class="main">
+        <h1>TASBIH COUNTER </h1>   
+ 
+         <h1 id="count">0</h1>
+         <button  class="button" id="myButton"   >count</button>
+         <button class="button" id="reset">reset</button> 
+         <button class="button" id="historybutton">history</button>   
+
+    </div>
+
+<div class="history"  id="bg">
+    <h1>HISTORY</h1>
+    <button class="button" id="back">back</button> 
+</div>
+
+    <script>
+let num  = 0 ; 
+
+
+var button = document.getElementById("myButton") ; 
+   button.addEventListener("click" , countChanger) ; 
+ 
+   var reset = document.getElementById("reset") ; 
+   reset.addEventListener("click" , countChanger2) ; 
+
+   var history2 = document.getElementById("historybutton") ; 
+    history2.addEventListener("click" , OpenHistory ) ; 
+    
+   var back = document.getElementById("back") ; 
+    back.addEventListener("click" , backtocount ) ;
+
+   function   countChanger (){
+     var  changeit = document.getElementById("count") ;
+     num = num +1 ; 
+
+      changeit.innerHTML  = num; 
+      
+   }
+   function countChanger2(){
+        num = 0 ;  
+        var  changeit = document.getElementById("count") ;
+      changeit.innerHTML  = num;  
+   }
+
+
+
+   function OpenHistory()
+   { 
+    document.getElementById("bg").style.visibility = "visible"  ; 
+
+ 
+
+
+   }
+   function backtocount()
+   {
+    document.getElementById("bg").style.visibility = "hidden"  ; 
+console.log("done")
+
+   }
+
+  
+ 
+
+
+
+
+
+    </script>
+</body>
+</html>
