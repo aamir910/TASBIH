@@ -10,27 +10,43 @@
     <!-- <script src="count.js"></script> -->
 </head>
 <body>
-    <div class="main">
-        <h1>TASBIH COUNTER </h1>   
- 
-         <h1 id="count">0</h1>
-         <button  class="button" id="myButton"   >count</button>
-         <button class="button" id="reset">reset</button> 
-         <button class="button" id="historybutton">history</button>   
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">COUNTER</a>
+        <div id="time" class="time"></div>
+      </nav>
+      <div class="countermain">
 
-    </div>
-
-<div class="history"  id="bg">
-    <h1>HISTORY</h1>
-    <button class="button" id="back">back</button> 
-</div>
-
-    <script>
-let num  = 0 ; 
-
-
-var button = document.getElementById("myButton") ; 
-   button.addEventListener("click" , countChanger) ; 
+          <div class="main">
+              
+              
+              
+              <h1>TASBIH COUNTER </h1>   
+              
+              <h1 id="count">0</h1>
+              <button  class="button" id="myButton"   >count</button>
+              <button class="button" id="reset">reset</button> 
+              <button class="button" id="historybutton">history</button>   
+              
+            </div>
+            
+            <div class="history"  id="bg">
+                <h1>HISTORY</h1>
+                <div class="historysec">
+                    
+                    <select id="myList" size="10">
+                        
+                    </select>
+                </div>
+                <button class="button" id="back">back</button> 
+            </div>
+            
+        </div>
+            <script>
+                let num  = 0 ; 
+                
+                
+                var button = document.getElementById("myButton") ; 
+                button.addEventListener("click" , countChanger) ; 
  
    var reset = document.getElementById("reset") ; 
    reset.addEventListener("click" , countChanger2) ; 
@@ -49,19 +65,31 @@ var button = document.getElementById("myButton") ;
       
    }
    function countChanger2(){
-        num = 0 ;  
-        var  changeit = document.getElementById("count") ;
-      changeit.innerHTML  = num;  
-   }
-
+       var  changeit = document.getElementById("count") ;
+       let count = 1 ; 
+       const node = document.createElement("option");
+       
+       // Create a text node:
+       const textnode = document.createTextNode("count "  +  num);
+       
+       // Append the text node to the "li" node:
+       node.appendChild(textnode);
+       
+       // Append the "li" node to the list:
+       document.getElementById("myList").appendChild( node); 
+       num = 0 ;  
+       changeit.innerHTML  = num; 
+       
+    }
+    
 
 
    function OpenHistory()
    { 
-    document.getElementById("bg").style.visibility = "visible"  ; 
-
- 
-
+       document.getElementById("bg").style.visibility = "visible"  ; 
+       
+       
+       
 
    }
    function backtocount()
@@ -70,6 +98,17 @@ var button = document.getElementById("myButton") ;
 console.log("done")
 
    }
+   function updateTime() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var timeString = hours + ":" + minutes + ":" + seconds;
+  document.getElementById("time").innerHTML = timeString;
+}
+
+setInterval(updateTime, 1000);
+
 
   
  
